@@ -106,7 +106,7 @@
             </systemproperties>
             <commands>
               <heap-test>com.thesett.junit.extensions.TKTestRunner -n heap-test -d1S -o results --csv com.thesett.rttest.FFTLatencyTest fftImpl=heap throttle=200</heap-test>
-              <stack-test>com.thesett.junit.extensions.TKTestRunner -n stack-test -d1S -o results --csv com.thesett.rttest.FFTLatencyTest fftImpl=stack throttle=200</stack-test>
+              <zerogc-test>com.thesett.junit.extensions.TKTestRunner -n stack-test -d1S -o results --csv com.thesett.rttest.FFTLatencyTest fftImpl=stack throttle=200</zerogc-test>
             </commands>
           </configuration>
 
