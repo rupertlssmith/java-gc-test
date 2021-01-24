@@ -1,0 +1,37 @@
+
+R version 2.10.0 (2009-10-26)
+Copyright (C) 2009 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> filenames <- list.files(getwd(), pattern = "*.csv")
+> 
+> for (i in filenames) {
++  file <- gsub(pattern=".csv", replacement="", i)
++ 
++  latencies <- read.csv(pipe(paste("cat", i, "|grep -v 'Total' | sed 's/Class, Method, Thread, Test Outcome, Time (milliseconds), Memory Used (bytes), Concurrency level, Test Size/Time, Memory, Concurrency, Size/g' | sed 's/^.*Pass, //g' | sed -n '2,12!p'")))
++  latencies_cum <- ecdf(latencies$Time)
++ 
++  png(paste(file,".png",sep=""))
++  plot(latencies_cum)
++  dev.off()
++ }
+> 
+> proc.time()
+   user  system elapsed 
+  1.675   0.601   1.533 
