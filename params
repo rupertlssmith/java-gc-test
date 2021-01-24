@@ -1,4 +1,7 @@
--default -java:Xms256M -java:Xmx256M -XX:CompileThreshold=1
--incr -java:Xms256M -java:Xmx256M -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:CompileThreshold=1
--g1 -java:Xms256M -java:Xmx256M -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:CompileThreshold=1
--parallel -java:Xms256M -java:Xmx256M -XX:+UseParallelGC -XX:CompileThreshold=1
+ default: -java:Xms256M -java:Xmx256M -XX:CompileThreshold=1
+  serial: -java:Xms256M -java:Xmx256M -XX:+UseSerialGC -XX:CompileThreshold=1
+parallel: -java:Xms256M -java:Xmx256M -XX:+UseParallelGC -XX:CompileThreshold=1
+    incr: -java:Xms256M -java:Xmx256M -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:CompileThreshold=1
+      g1: -java:Xms256M -java:Xmx256M -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:CompileThreshold=1
+     zgc: -java:Xms256M -java:Xmx256M -XX:+UnlockExperimentalVMOptions -XX:+UseZGC -XX:CompileThreshold=1
+
